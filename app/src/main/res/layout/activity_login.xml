@@ -9,6 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/blue"
+    android:label="@string/app_name"
     tools:context="cis3334.fitnessapp.LoginActivity">
 
     <EditText

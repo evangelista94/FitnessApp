@@ -39,7 +39,8 @@ public class UserFirebaseData {
 
     }
     public void updateUser(String userId){
-       this.userId = userId;
+        this.userId = userId;
+        Log.d("CSS3334","UserFirebaseData - updateUser - User="+userId);
     }
 
     //get the current logged in user's id from Firebase
@@ -47,11 +48,14 @@ public class UserFirebaseData {
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user == null){
-            //user is signed out
-            Log.d("CSS3334","onAuthStateChanged - User NOT signed in");
-            Intent signInIntent = new Intent(activity, LoginActivity.class);
-            activity.startActivity(signInIntent);
+//            //user is signed out
+//            Log.d("CSS3334","onAuthStateChanged - User NOT signed in");
+//            Intent signInIntent = new Intent(activity, LoginActivity.class);
+//            activity.startActivity(signInIntent);
+            Log.d("CSS3334","UserFirebaseData - getUserId - Null User=");
+            return null;
         }
+        Log.d("CSS3334","UserFirebaseData - getUserId - User="+user.getUid());
         return user.getUid();
     }
 
@@ -75,7 +79,7 @@ public class UserFirebaseData {
     public List<User> getAllUsers(DataSnapshot dataSnapshot) {
         List<User> userList = new ArrayList<User>();
         for (DataSnapshot data : dataSnapshot.child("users").child(userId).getChildren()) {
-            Log.d("CIS3334", "=== getAllUsers === " + data.toString());
+            Log.d("CIS3334", "=== getAllUsers Info  === " + data.toString());
             User user = data.getValue(User.class);
             userList.add(user);
         }

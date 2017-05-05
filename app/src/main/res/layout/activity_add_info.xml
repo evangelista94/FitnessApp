@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/blue"
     tools:context="cis3334.fitnessapp.AddInfoActivity">
 
     <TextView
@@ -63,7 +64,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName|number|numberDecimal"
+        android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editTextHeartRate"
         android:hint="Heart Rate"
@@ -75,7 +76,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/editTextBloodPressure"
-        android:inputType="textPersonName|number|numberDecimal"
+        android:inputType="textPersonName"
         android:hint="Blood Pressure"
         android:layout_below="@+id/editTextHeartRate"
         android:layout_alignParentStart="true" />

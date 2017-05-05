@@ -55,7 +55,7 @@ public class LoginActivity extends Activity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) { //when failed
-                    Toast.makeText(LoginActivity.this, "SignIn -- Authentication failed.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Account does not exist. Create One.", Toast.LENGTH_LONG).show();
                 } else {
                     //return to MainActivity if login works
                     finish();
