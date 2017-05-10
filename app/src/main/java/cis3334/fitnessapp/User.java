@@ -20,6 +20,9 @@ public class User implements Serializable {
     public User() {
     }
 
+    /*basic constructor for all strings to be added by the user
+    * @param key, name, age, weight, height, heartRate, bloodPressure, date
+     */
     public User(String key, String name, String age, String weight, String height, String heartRate, String bloodPressure, String date)  {
         this.key = key;
         this.name = name;
@@ -97,6 +100,9 @@ public class User implements Serializable {
     }
 
 
+    /*
+    * method returns string variable values
+     */
     @Override
     public String toString() {
         return "User{" +

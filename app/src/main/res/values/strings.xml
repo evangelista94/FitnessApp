@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FitnessApp</string>
+    <string name="app_name">My Fitness</string>
     <string name="users_signed">Information entered so far...</string>
     <string name="add_user">Add a user</string>
     <string name="user_details">User Details</string>

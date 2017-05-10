@@ -13,6 +13,9 @@ public class UserDetailsActivity extends Activity {
     Button buttonBack;
     EditText editTextName, editTextAge, editTextWeight, editTextHeight, editTextHeartRate, editTextBloodPressure, editTextDate;
 
+    /*
+    * onCreate method runs when application starts
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +35,7 @@ public class UserDetailsActivity extends Activity {
         editTextDate = (EditText) findViewById(R.id.editTextDate);
 
 
-
+        // getting edit text text and setting it to text
         editTextName.setText(user.getName());
         editTextWeight.setText(user.getWeight());
         editTextDate.setText(user.getDate());

@@ -17,6 +17,10 @@ public class AddInfoActivity extends Activity {
     Button save;
     UserFirebaseData fitnessDataSource;
 
+
+    /*
+    * onCreate method to run program when application starts
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +37,13 @@ public class AddInfoActivity extends Activity {
         save = (Button) findViewById(buttonSave);
 
         fitnessDataSource = new UserFirebaseData();
-        fitnessDataSource.open(this);
+        fitnessDataSource.open(this);     //datasource reference
 
     }
 
+    /*
+    * method to add user and their information when button is clicked
+     */
     public void onClick(View view) {
         // Add the user's information to the database
         String Name = name.getText().toString();
@@ -48,6 +55,7 @@ public class AddInfoActivity extends Activity {
         String Date = date.getText().toString();
 
 
+        // intent redirects to main activity once information is added
         fitnessDataSource.createUser(Name, Age, Height, Weight, HeartRate, BloodPressure, Date);
         Intent mainActIntent = new Intent(view.getContext(), MainActivity.class);
         finish();

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,10 +38,14 @@ public class MainActivity extends Activity {
     DataSnapshot fbDataSnapshot;
 
 
+    /*
+    * onCreate method runs the program when the application starts
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         SetUpFirebaseDataChange();
         setupListView();
@@ -50,7 +55,7 @@ public class MainActivity extends Activity {
 
         buttonSignOut = (Button) findViewById(R.id.buttonSignOut);
 
-        mAuth = FirebaseAuth.getInstance();   //declare object for Firebase
+        mAuth = FirebaseAuth.getInstance();       //declare object for Firebase
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {   //initialized mAuthListener
             @Override
@@ -80,23 +85,32 @@ public class MainActivity extends Activity {
         };
     }
 
-
+    /*
+    * method called to start displaying activity to user
+     */
     public void onStart() {
-        super.onStart(); // Creates the listener object
+        super.onStart();        // Creates the listener object
         Log.d("CSS3334","Main - onStart");
-        mAuth.addAuthStateListener(mAuthListener); // Adds a state listener to the object
+        mAuth.addAuthStateListener(mAuthListener);      // Adds a state listener to the object
     }
 
+
+    /*
+    * method called to stop displaying activity to user
+     */
     @Override
     public void onStop() {
-        super.onStop();
+        super.onStop();      //activity invisible to user
         Log.d("CSS3334","Main - onStop");
-        if (mAuthListener != null) { // checks to see if there is a state listener and if there is then it will be removed
+        if (mAuthListener != null) {      // checks to see if there is a state listener and if there is then it will be removed
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
 
 
+    /*
+    * method sets up datasource reference
+     */
     private void SetUpFirebaseDataChange() {
         fitnessDataSource = new UserFirebaseData();
         myUserDbRef = fitnessDataSource.open(this);
@@ -118,6 +132,9 @@ public class MainActivity extends Activity {
         });
     }
 
+    /*
+    * method sets up the listview for the users information
+     */
     private void setupListView() {
         ListViewUsers = (ListView) findViewById(R.id.ListViewUsers);
         ListViewUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -129,6 +146,10 @@ public class MainActivity extends Activity {
         });
     }
 
+
+    /*
+    * method sets up the add button for adding a user's information
+     */
     private void setupAddButton() {
         // Set up the button to add a new user using a seperate activity
         buttonAdd = (Button) findViewById(R.id.buttonAddUser);
@@ -143,6 +164,10 @@ public class MainActivity extends Activity {
         });
     }
 
+
+    /*
+    * method to set up a button for viewing user information
+     */
     private void setupDetailButton() {
         // Set up the button to display details on one user using a seperate activity
         buttonDetails = (Button) findViewById(R.id.buttonDetails);
@@ -157,6 +182,9 @@ public class MainActivity extends Activity {
         });
     }
 
+    /*
+    * method set up for button to delete a user and their information
+     */
     private void setupDeleteButton() {
         // Set up the button to display details on one user using a seperate activity
         buttonDelete = (Button) findViewById(R.id.buttonDelete);

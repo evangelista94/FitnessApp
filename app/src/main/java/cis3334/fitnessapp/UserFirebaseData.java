@@ -35,9 +35,16 @@ public class UserFirebaseData {
         return myUserDbRef;
     }
 
+    /*
+    * method closes database
+     */
     public void close() {
 
     }
+
+    /*
+    * method updates what user is logged in and logged out
+     */
     public void updateUser(String userId){
         this.userId = userId;
         Log.d("CSS3334","UserFirebaseData - updateUser - User="+userId);
@@ -59,6 +66,10 @@ public class UserFirebaseData {
         return user.getUid();
     }
 
+
+    /*
+    * method creates user in database
+     */
     public User createUser(String name, String age, String weight, String height, String bloodPressure, String heartRate, String date) {           //Added String rating as a parameter
         // ---- Get a new database key for the vote
         String key = myUserDbRef.child(UserDataTag).push().getKey();
@@ -71,11 +82,18 @@ public class UserFirebaseData {
 
 
 
+    /*
+    * method deletes user from firebase
+     */
     public void deleteUser(User user) {
         String key = user.getKey();
         myUserDbRef.child("users").child(userId).child(key).removeValue();
     }
 
+
+    /*
+    * method that pulls all users in the database
+     */
     public List<User> getAllUsers(DataSnapshot dataSnapshot) {
         List<User> userList = new ArrayList<User>();
         for (DataSnapshot data : dataSnapshot.child("users").child(userId).getChildren()) {
